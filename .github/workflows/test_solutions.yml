@@ -1,0 +1,62 @@
+name: Test Solutions
+on:
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: ["python", "java", "c"]
+    steps:
+      - uses: actions/checkout@v4
+      
+      # Setup language environments
+      - name: Set up Python 3.10
+        if: matrix.language == 'python'
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      
+      - name: Set up Java 17
+        if: matrix.language == 'java'
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
+      
+      - name: Set up GCC
+        if: matrix.language == 'c'
+        run: sudo apt-get install -y gcc
+      
+      # Find and test solutions
+      - name: Find solution files
+        id: find-files
+        run: |
+          echo "FILES=$(find practice-problems -name "*.${{ matrix.language }}" -not -path "*/test/*" | tr '\n' ' ')" >> $GITHUB_OUTPUT
+      
+      - name: Test Python solutions
+        if: matrix.language == 'python'
+        run: |
+          for file in ${{ steps.find-files.outputs.FILES }}; do
+            echo "Testing $file"
+            python "$file" || exit 1
+          done
+      
+      - name: Test Java solutions
+        if: matrix.language == 'java'
+        run: |
+          for file in ${{ steps.find-files.outputs.FILES }}; do
+            echo "Testing $file"
+            javac "$file"
+            java -cp "$(dirname "$file")" "$(basename "$file" .java)" || exit 1
+          done
+      
+      - name: Test C solutions
+        if: matrix.language == 'c'
+        run: |
+          for file in ${{ steps.find-files.outputs.FILES }}; do
+            echo "Testing $file"
+            gcc "$file" -o "${file%.*}"
+            "./${file%.*}" || exit 1
+          done
