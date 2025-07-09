@@ -1,7 +1,7 @@
 # practice-problems
 
 ## Adding New Problems
-# From repo root, run:
+#### From repo root, run:
 python generate_problem.py "problem_name" --source "leetcode" --difficulty "easy"
 
 ##  Testing Automation
