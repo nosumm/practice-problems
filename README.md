@@ -1,10 +1,14 @@
 # practice-problems
 
-## 🚀 Testing Automation
+## Adding New Problems
+# From repo root, run:
+python generate_problem.py "problem_name" --source "leetcode" --difficulty "easy"
+
+##  Testing Automation
 
 This repo uses GitHub Actions to automatically test solutions in Python, Java, and C. Here's how it works:
 
-### 🔧 How to Run Tests
+###  How to Run Tests
 1. **Manually trigger tests**:
    - Via GitHub UI: 
      1. Go to **Actions** tab
@@ -21,7 +25,7 @@ This repo uses GitHub Actions to automatically test solutions in Python, Java, a
      - Java: `**/*.java`
      - C: `**/*.c`
 
-### 🛠️ How to Write Testable Solutions
+###  How to Write Testable Solutions
 For tests to work, each solution file must include executable code:
 
 #### Python Example
