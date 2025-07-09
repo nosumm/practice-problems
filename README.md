@@ -2,7 +2,7 @@
 
 ## Adding New Problems
 #### From repo root, run:
-python generate_problem.py "problem_name" --source "leetcode" --difficulty "easy"
+python3 generate_problem.py "problem_name" --source "leetcode" --difficulty "easy"
 
 ##  Testing Automation
 
