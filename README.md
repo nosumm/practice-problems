@@ -38,8 +38,9 @@ def two_sum(nums, target):
 if __name__ == "__main__":
     assert two_sum([2,7,11,15], 9) == [0, 1]  # Test case
     print("✓ Test passed")
-
-#### Java Example 
+```
+#### Java Example
+```java
 // practice-problems/leetcode/TwoSum.java
 public class TwoSum {
     public static void main(String[] args) {
@@ -52,8 +53,9 @@ public class TwoSum {
         return new int[]{0, 1};  // Example
     }
 }
-
+```
 #### C Example
+```c
 // practice-problems/leetcode/two_sum.c
 #include <stdio.h>
 #include <assert.h>
@@ -70,5 +72,5 @@ int main() {
     printf("✓ Test passed\n");
     return 0;
 }
-
+```
 
