@@ -60,3 +60,12 @@ jobs:
             gcc "$file" -o "${file%.*}"
             "./${file%.*}" || exit 1
           done
+      
+        - name: Test C++ solutions
+        if: matrix.language == 'c++'
+        run: |
+          for file in ${{ steps.find-files.outputs.FILES }}; do
+            echo "Testing $file"
+            gcc "$file" -o "${file%.*}"
+            "./${file%.*}" || exit 1
+          done

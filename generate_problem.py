@@ -26,7 +26,7 @@ def create_problem_structure(problem_name, problem_source="leetcode", difficulty
     (base_dir / problem_source / difficulty).mkdir(exist_ok=True)
 
     # Create language directories
-    languages = ["python", "java", "c"]
+    languages = ["python", "java", "c", "c++"]
     created_files = []
     
     for lang in languages:
@@ -56,6 +56,16 @@ public class {class_name} {{
         elif lang == "c":
             file_path = lang_dir / f"{problem_name}.c"
             content = f"""// Solution for {problem_name} (C)
+// Problem: https://{problem_source}.com/problems/{problem_name.replace('_', '-')}/
+#include <stdio.h>
+
+int main() {{
+    printf("Solution for {problem_name}\\n");
+    return 0;
+}}"""
+        elif lang == "c++":
+            file_path = lang_dir / f"{problem_name}.cpp"
+            content = f"""// Solution for {problem_name} (C++)
 // Problem: https://{problem_source}.com/problems/{problem_name.replace('_', '-')}/
 #include <stdio.h>
 

@@ -6,7 +6,7 @@ python3 generate_problem.py "problem_name" --source "leetcode" --difficulty "eas
 
 ##  Testing Automation
 
-This repo uses GitHub Actions to automatically test solutions in Python, Java, and C. 
+This repo uses GitHub Actions to automatically test solutions in Python, Java, C, C++. 
 
 ###  How to Run Tests
 1. **Manually trigger tests**:
